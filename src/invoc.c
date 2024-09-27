@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <string.h>
+#include <sys/wait.h>  // Add this for the 'wait' function
 
 #define CMD_BUFFER_SIZE 256
 #define OUTPUT_BUFFER_SIZE 4096
@@ -41,7 +42,7 @@ void execute_gdb_command(const char* binary_path, const char* gdb_command) {
         }
 
         close(pipes[0]); 
-        wait(NULL); 
+        wait(NULL); // This is the wait function that needed the correct header file
     }
 }
 
